@@ -15,10 +15,10 @@ const bar3 = document.querySelector(".bar3");
 const bar4 = document.querySelector(".bar4");
 
 const setOfCharacters = {
-    uppercase: ["ABCDEFGHIJKLMNOPQRSTUVWXYZ",26],
+    uppercase: ["ABCDEFGHIJKLMNOPQRSTUVWXYZ", 26],
     lowercase: ["abcdefghijklmnopqrstuvwxyz", 26],
     numbers: ["0123456789", 10],
-    symbols : ["!@#$%^&*()_+[]{}|;:,.<>?", 24]
+    symbols: ["!@#$%^&*()_+[]{}|;:,.<>?", 24]
 };
 
 
@@ -54,7 +54,7 @@ const shuffleArray = (arr) => {
     for (let i = 0; i < arr.length; i++) {
         // Generate a random index from 0 to i
         const j = Math.floor(Math.random() * (i + 1));
-        
+
         // Swap elements at index i and j
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
@@ -96,9 +96,9 @@ const checkPassStrength = (password) => {
 
     console.log("Password strength is: ", strength);
 
-    
+
     if (strength <= 1) {
-        passwordStrength.innerText = "TOO WEAK!"      
+        passwordStrength.innerText = "TOO WEAK!"
     } else if (strength <= 2) {
         passwordStrength.innerText = "WEAK"
     } else if (strength <= 4) {
@@ -112,43 +112,43 @@ const checkPassStrength = (password) => {
 };
 
 const changeBarColor = (strength) => {
-    
+
     if (strength <= 1) {
         bar1.style.backgroundColor = "var(--Red-500)";
         bar1.style.borderColor = "var(--Red-500)";
-        
+
     } else if (strength <= 2) {
         for (let i = 1; i <= 2; i++) {
             const bar = document.querySelector(`.bar${i}`);
             bar.style.backgroundColor = "var(--Orange-400)";
             bar.style.borderColor = "var(--Orange-400)";
         }
-        
+
     } else if (strength <= 4) {
-        
+
         for (let i = 1; i <= 3; i++) {
             const bar = document.querySelector(`.bar${i}`);
             bar.style.backgroundColor = "var(--Yellow-300)";
             bar.style.borderColor = "var(--Yellow-300)";
-        }        
-        
-    } else if (strength > 4) {        
+        }
+
+    } else if (strength > 4) {
         bars.forEach(bar => {
-        bar.style.backgroundColor = "var(--Green)";
-        bar.style.borderColor = "var(--Green)";
-        })        
+            bar.style.backgroundColor = "var(--Green)";
+            bar.style.borderColor = "var(--Green)";
+        })
     }
 
 };
 
 
 
- const resetBarsColor = () => {
+const resetBarsColor = () => {
     bars.forEach(bar => {
         bar.style.backgroundColor = "var(--Grey-850)";
         bar.style.borderColor = "var(--Grey-200)";
     });
- };
+};
 
 
 
@@ -167,12 +167,12 @@ const rebuildCharacterSets = () => {
     charPool = [];
     guaranteedCharacters = [];
 
-    
+
     // Add characters based on checked checkboxes
     checkboxes.forEach((checkbox) => {
         const checkboxValue = checkbox.value; // Store the checkbox value
         if (checkbox.checked) {
-            
+
             const randomIndex = Math.floor(Math.random() * setOfCharacters[checkboxValue][1]);
 
             // Add one guaranteed character from the selected set
@@ -185,46 +185,73 @@ const rebuildCharacterSets = () => {
 
             // Remove the characters associated with the unchecked box from charPool
             charPool = charPool.filter(char => !setOfCharacters[checkboxValue][0].includes(char));
-            
+
             //console.log("after unchecking, Charpool array is now: ", charPool);
-            guaranteedCharacters = guaranteedCharacters.filter(char => !setOfCharacters[checkboxValue][0].includes(char));            
+            guaranteedCharacters = guaranteedCharacters.filter(char => !setOfCharacters[checkboxValue][0].includes(char));
         }
     });
-    
+
 };
 
 
 copyBtn.addEventListener("click", () => {
-     // Copy generated password to clipboard
-     navigator.clipboard.writeText(passwordDisplay.textContent);
-     copiedText.classList.add("show")
-     setTimeout(() => {
+    // Copy generated password to clipboard
+    navigator.clipboard.writeText(passwordDisplay.textContent);
+    copiedText.classList.add("show")
+    setTimeout(() => {
         copiedText.classList.remove("show");
-     }, 2000);
-     
+    }, 2000);
+
 });
 
 
 generateBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    
+
     // Reset charPool and guaranteedCharacters before generating a new password
-    rebuildCharacterSets(); 
-    resetBarsColor();      
-    generatePassword();     
-    
+    rebuildCharacterSets();
+    resetBarsColor();
+    generatePassword();
+
     // Copy generated password to clipboard
     navigator.clipboard.writeText(passwordDisplay.textContent);
-            
-    });
+
+});
 
 
 
-    generatePassword = () => {
-        const passLength = slider.value;    
-    password = [...guaranteedCharacters];    
+const adjustFontSize = () => {
+    const screenWidth = window.innerWidth;
+    const textLength = passwordDisplay.textContent.length;
+    console.log("Password text length: ", textLength); // Debugging
+
+    // Check screen width 
+    if (screenWidth <= 550) { // For mobile or smaller screens
+        if (textLength > 18) { // So the copied text doesn't overlap with the generated password
+            passwordDisplay.style.fontSize = "16px";
+        } else {
+            passwordDisplay.style.fontSize = "18px";
+        }
+    } else { // For larger screens (desktop/tablet)
+        if (textLength > 18) { // So the copied text doesn't overlap with the generated password
+            passwordDisplay.style.fontSize = "29px";
+        } else {
+            passwordDisplay.style.fontSize = "32px";
+        }
+    }
+};
+
+window.addEventListener("resize", () => {
+    adjustFontSize();
+})
+
+
+
+generatePassword = () => {
+    const passLength = slider.value;
+    password = [...guaranteedCharacters];
     const remainingCharacters = passLength - guaranteedCharacters.length;
-    
+
     if (remainingCharacters > 0) {
         for (let i = 0; i < remainingCharacters; i++) {
             const randomIndex = Math.floor(Math.random() * charPool.length);
@@ -235,117 +262,38 @@ generateBtn.addEventListener("click", (event) => {
 
         password = shuffleArray(guaranteedCharacters);
         //If number of checked boxes is less than slider value, slice the password to match the length of slider value
-        
-        password = password.slice(0, passLength);           
+
+        password = password.slice(0, passLength);
     }
-    
-        password = shuffleArray(password);
-        password = password.join("");
-        console.log("Final password: ", password);
-        passwordDisplay.textContent = password;
-        passwordDisplay.style.color = "#E6E5EA";
 
+    password = shuffleArray(password);
+    password = password.join("");
+    console.log("Final password: ", password);
+    passwordDisplay.textContent = password;
+    passwordDisplay.style.color = "#E6E5EA";
 
+    /*
         // Check screen width
-    const screenWidth = window.innerWidth;
-
-    // Apply different font sizes based on screen width
-    if (screenWidth <= 550) { // For mobile or smaller screens
-        if (password.length > 18) {
-            passwordDisplay.style.fontSize = "16px"; // Smaller font size for mobile and longer passwords
-        } else {
-            passwordDisplay.style.fontSize = "18px"; // Default smaller font size for mobile
-        }
-    } else { // For larger screens (desktop/tablet)
-        if (password.length > 18) {
-            passwordDisplay.style.fontSize = "29px"; // Smaller font size for larger screens and longer passwords
-        } else {
-            passwordDisplay.style.fontSize = "32px"; // Default larger font size for larger screens
-        }
-    }
-        
-        
-        checkPassStrength(password);
-    }
-
-
-
-
-
-/*  The code bellow is with console logs I used for debugging 
-
-// Event listener for checkboxes
-checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-        // Rebuild charPool and guaranteedCharacters when checkbox is changed
-        rebuildCharacterSets();
-    });
-});
-
-// Rebuild the character sets based on checked checkboxes
-const rebuildCharacterSets = () => {
-    // Reset charPool and guaranteedCharacters every time
-    charPool = [];
-    guaranteedCharacters = [];
-
+        const screenWidth = window.innerWidth;
     
-    // Add characters based on checked checkboxes
-    checkboxes.forEach((checkbox) => {
-        const checkboxValue = checkbox.value; // Store the checkbox value
-        if (checkbox.checked) {
-            console.log("checked box: ", checkboxValue);
-            const randomIndex = Math.floor(Math.random() * setOfCharacters[checkboxValue][1]);
+        // Apply different font sizes based on screen width
+        if (screenWidth <= 550) { // For mobile or smaller screens
+            if (password.length > 18) {
+                passwordDisplay.style.fontSize = "16px"; // Smaller font size for mobile and longer passwords
+            } else {
+                passwordDisplay.style.fontSize = "18px"; // Default smaller font size for mobile
+            }
+        } else { // For larger screens (desktop/tablet)
+            if (password.length > 18) {
+                passwordDisplay.style.fontSize = "29px"; // Smaller font size for larger screens and longer passwords
+            } else {
+                passwordDisplay.style.fontSize = "32px"; // Default larger font size for larger screens
+            }
+        }         */
 
-            // Add one guaranteed character from the selected set
-            guaranteedCharacters.push(setOfCharacters[checkboxValue][0][randomIndex]);
 
-            // Add all characters of this set to the charPool
-            charPool.push(...setOfCharacters[checkboxValue][0].split(''));
-        } else {
-            console.log("Unhecked box: ", checkboxValue);
-
-            // Remove the characters associated with the unchecked box from charPool
-            charPool = charPool.filter(char => !setOfCharacters[checkboxValue][0].includes(char));
-            
-            console.log("after unchecking, Charpool array is now: ", charPool);
-            guaranteedCharacters = guaranteedCharacters.filter(char => !setOfCharacters[checkboxValue][0].includes(char));
-            console.log("After unchecking, Guaranteed char is now: ", guaranteedCharacters);
-        }
-    });
-
-    console.log("Updated charPool: ", charPool);
-    console.log("Updated guaranteedCharacters: ", guaranteedCharacters);
-};
-
-*/
+    checkPassStrength(password);
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function copyText() {
-
-            /* Select text area by id*/
-            //let Text = document.getElementById("textbox");
-
-            /* Select the text inside text area. */
-            //Text.select();
-
-            /* Copy selected text into clipboard */
-            //navigator.clipboard.writeText(Text.value);
-
-            /* Set the copied text as text for 
-            div with id clipboard */
-            //document.getElementById("clipboard").innerHTML = Text.value;
-        //}  */
