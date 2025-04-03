@@ -54,6 +54,7 @@ body {
     height: 100vh;
     align-items: center;
     justify-content: center;
+
     background: linear-gradient(to right, #14131b, #08070B);
 }
 
@@ -403,4 +404,11 @@ input[type=checkbox]:checked~.checkmark {
         line-height: 20px;
     }
 
+}
+
+
+@media (orientation: landscape) and (max-width: 768px) {
+    body {
+        margin-top: 12rem;
+    }
 }
