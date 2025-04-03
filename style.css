@@ -47,7 +47,6 @@
 
 
 
-
 body {
     font-family: "JetBrains Mono", monospace;
     display: flex;
@@ -57,7 +56,6 @@ body {
     justify-content: center;
     background: linear-gradient(to right, #14131b, #08070B);
 }
-
 
 
 h1 {
@@ -82,9 +80,6 @@ h1 {
     font-weight: 700;
     font-size: 32px;
     line-height: 42px;
-
-
-
 }
 
 .copied-text {
@@ -100,8 +95,6 @@ h1 {
 /*When the 'show' class is added, the element becomes visible */
 .copied-text.show {
     opacity: 1;
-
-
 }
 
 .copy-btn {
@@ -229,7 +222,6 @@ input[type=checkbox]:checked~.checkmark {
 }
 
 .custom-checkbox:hover {
-
     border-color: var(--Green);
 }
 
@@ -239,9 +231,6 @@ input[type=checkbox]:checked~.checkmark {
     left: 3px;
     display: none;
 }
-
-
-
 
 .checkbox-label {
     margin: 0;
@@ -266,7 +255,6 @@ input[type=checkbox]:checked~.checkmark {
     margin-bottom: auto;
     font-size: 18px;
     line-height: 24px;
-
 }
 
 
@@ -291,7 +279,6 @@ input[type=checkbox]:checked~.checkmark {
 }
 
 .bar {
-
     width: 10px;
     height: 28px;
     border: 2px solid var(--Grey-200);
@@ -312,8 +299,6 @@ input[type=checkbox]:checked~.checkmark {
     border: 2px solid var(--Green);
     font-size: 18px;
     line-height: 24px;
-
-
 }
 
 .generate-btn:active {
@@ -325,8 +310,6 @@ input[type=checkbox]:checked~.checkmark {
 .generate-btn span img {
     margin-top: -4px;
     transform: translate(24px, 0px);
-
-
 }
 
 .generate-btn:active span img {
@@ -340,8 +323,6 @@ input[type=checkbox]:checked~.checkmark {
     .container {
         max-width: 343px !important;
     }
-
-
 
     h1 {
         font-size: 16px;
@@ -380,7 +361,6 @@ input[type=checkbox]:checked~.checkmark {
     }
 
 
-
     .char-length-text {
         margin-bottom: 16px;
     }
@@ -390,11 +370,6 @@ input[type=checkbox]:checked~.checkmark {
         color: var(--Grey-200);
     }
 
-    /* Change this code bellow for smaller screen sizes, I might need to change each checkbox check sign separatelly*/
-    .custom-checkbox::after {
-        position: absolute;
-        top: 0px;
-    }
 
 
     .checkbox-label {
@@ -422,25 +397,10 @@ input[type=checkbox]:checked~.checkmark {
         font-size: 18px;
     }
 
-    .bars {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        margin-left: 1rem;
-    }
-
-    .bar {
-        width: 10px;
-        height: 28px;
-        background-color: red;
-    }
-
     .generate-btn {
         padding: 16px;
         font-size: 16px;
         line-height: 20px;
     }
-
 
 }
