@@ -1,0 +1,442 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    //border: 1px solid yellow;
+}
+
+:root {
+    /*Colors*/
+    --Grey-950: #08070B;
+    --Grey-900: #14131B;
+    --Grey-850: #18171F;
+    --Grey-800: #24232C;
+    --Grey-700: #54535B;
+    --Grey-600: #817D92;
+    --Grey-200: #E6E5EA;
+    --Green: #A4FFAF;
+    --Yellow-300: #F8CD65;
+    --Orange-400: #FB7C58;
+    --Red-500: #F64A4A;
+
+}
+
+.text-preset-1 {
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: 0px;
+}
+
+.text-preset-2 {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0px;
+}
+
+.text-preset-3 {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.text-preset-4 {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
+}
+
+
+
+
+body {
+    font-family: "JetBrains Mono", monospace;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #14131b, #08070B);
+}
+
+
+
+h1 {
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--Grey-600);
+    margin-bottom: 32px;
+}
+
+.password-field {
+    background-color: var(--Grey-800);
+    margin-bottom: 24px;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#password-display {
+    color: var(--Grey-700);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+
+
+
+}
+
+.copied-text {
+    color: var(--Green);
+    position: absolute;
+    right: 60px;
+    right: 77px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    /* Transition to fade out */
+}
+
+/*When the 'show' class is added, the element becomes visible */
+.copied-text.show {
+    opacity: 1;
+
+
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+}
+
+.copy-btn:hover img {
+    filter: contrast(4);
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    max-width: 540px;
+}
+
+form {
+    background-color: var(--Grey-800);
+    padding: 24px 32px;
+}
+
+
+.char-length-text {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.char-length-text p {
+    margin: 0;
+}
+
+
+.char-length-text p,
+.checkBoxes {
+    color: var(--Grey-200);
+}
+
+.char-length-digit {
+    color: var(--Green);
+    align-self: flex-end;
+}
+
+/* Slider Style */
+.slider {
+    -webkit-appearance: none;
+    /* Removes default styling */
+    width: 100%;
+    height: 8px;
+    background: var(--Grey-850);
+    /* Default background color */
+    border-radius: 5px;
+    margin-bottom: 32px;
+    transition: background 0.3s ease;
+}
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Removes default thumb styling */
+    background: var(--Grey-200);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:active {
+    background: var(--Grey-850);
+    border: 2px solid var(--Green);
+}
+
+
+.checkBoxes {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 32px;
+
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.checkbox-label:hover {
+    cursor: pointer;
+}
+
+
+.checkbox {
+    width: 0px;
+    height: 0px;
+}
+
+input[type=checkbox]:checked~.custom-checkbox {
+    border-color: var(--Green);
+    background-color: var(--Green);
+}
+
+/*This targets the sibling of the checkbox input (in this case a div with the class checkmark) when it gets checked*/
+input[type=checkbox]:checked~.checkmark {
+    display: block;
+}
+
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid var(--Grey-200);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.custom-checkbox:hover {
+
+    border-color: var(--Green);
+}
+
+
+.checkmark {
+    position: absolute;
+    left: 3px;
+    display: none;
+}
+
+
+
+
+.checkbox-label {
+    margin: 0;
+    margin-left: 1.5rem;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.strength-box {
+    background-color: var(--Grey-850);
+    padding: 24px 32px;
+    color: var(--Grey-600);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.strength-box p {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 18px;
+    line-height: 24px;
+
+}
+
+
+.strength-rating {
+    display: flex;
+    flex-direction: row;
+}
+
+.strength-rating-text {
+    font-size: x-large;
+    color: var(--Grey-200);
+    opacity: 0;
+}
+
+.bars-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-left: 1rem;
+
+}
+
+.bar {
+
+    width: 10px;
+    height: 28px;
+    border: 2px solid var(--Grey-200);
+    background-color: var(--Grey-850);
+}
+
+.generate-btn {
+    width: 100%;
+    padding: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: var(--Green);
+    color: var(--Grey-800);
+    border: 2px solid var(--Green);
+    font-size: 18px;
+    line-height: 24px;
+
+
+}
+
+.generate-btn:active {
+    background-color: var(--Grey-800);
+    color: var(--Green);
+    border: 2px solid var(--Green);
+}
+
+.generate-btn span img {
+    margin-top: -4px;
+    transform: translate(24px, 0px);
+
+
+}
+
+.generate-btn:active span img {
+    /*I used an online HEX color to CSS filter converter to get this color from my var(--Green) on this page: https://cssfilterconverter.com/*/
+
+    filter: brightness(0) saturate(100%) invert(86%) sepia(11%) saturate(1183%) hue-rotate(72deg) brightness(104%) contrast(100%);
+
+}
+
+@media(max-width:550px) {
+    .container {
+        max-width: 343px !important;
+    }
+
+
+
+    h1 {
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0px;
+        margin-bottom: 16px;
+    }
+
+    .password-field {
+        margin-bottom: 16px;
+        padding: 16px 16px;
+    }
+
+    #password-display {
+        color: var(--Grey-700);
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0px;
+    }
+
+    .copied-text {
+        right: 50px
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        max-width: 540px;
+    }
+
+    form {
+        background-color: var(--Grey-800);
+        padding: 16px 16px;
+    }
+
+
+
+    .char-length-text {
+        margin-bottom: 16px;
+    }
+
+    .char-length-text p,
+    .checkBoxes {
+        color: var(--Grey-200);
+    }
+
+    /* Change this code bellow for smaller screen sizes, I might need to change each checkbox check sign separatelly*/
+    .custom-checkbox::after {
+        position: absolute;
+        top: 0px;
+    }
+
+
+    .checkbox-label {
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0px;
+        margin-left: 1rem;
+    }
+
+    .strength-box {
+        background-color: var(--Grey-850);
+        padding: 14px 16px;
+        color: var(--Grey-600);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .strength-box p {
+        font-size: 16px;
+    }
+
+    .strength-rating-text {
+        font-size: 18px;
+    }
+
+    .bars {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-left: 1rem;
+    }
+
+    .bar {
+        width: 10px;
+        height: 28px;
+        background-color: red;
+    }
+
+    .generate-btn {
+        padding: 16px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+
+}

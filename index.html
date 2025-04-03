@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Password generator app</title>
+</head>
+
+<body>
+  <header>
+    <h1>Password Generator</h1>
+
+  </header>
+  <main class="container">
+
+
+
+
+    <div class="password-field">
+
+      <span id="password-display" class="">
+        <span class="password-placeholder">P4$5W0rD!</span>
+      </span>
+      <div class="copy-section">
+        <span class="copied-text">COPIED</span>
+        <button class="copy-btn">
+          <img src="starter-code/assets/images/icon-copy.svg" alt="">
+        </button>
+
+      </div>
+
+
+    </div>
+
+    <form class="generator-card">
+
+      <div class="char-length-section">
+        <div class="char-length-text">
+          <p class="text-preset-3">Character Length</p>
+          <span class="char-length-digit text-preset-1">1</span>
+        </div>
+        <div class="range-div">
+          <input type="range" class="slider" min="1" max="20" value="1">
+        </div>
+
+      </div>
+
+      <div class="checkBoxes">
+        <div class="upperCaseDiv">
+
+          <label>
+            <input type="checkbox" name="include-upperCase" id="include-upperCase" class="checkbox" value="uppercase"
+              checked>
+            <span class="custom-checkbox"></span>
+            <div class="checkmark-uppercase checkmark">
+              <img src="starter-code/assets/images/icon-check.svg" alt="">
+            </div>
+            <p class="checkbox-label">Include Uppercase Letters</p>
+          </label>
+        </div>
+
+        <div class="lowerCaseDiv">
+          <label>
+            <input type="checkbox" name="include-lowerCase" id="include-lowerCase" class="checkbox" value="lowercase">
+            <span class="custom-checkbox"></span>
+            <div class="checkmark-lowercase checkmark">
+              <img src="starter-code/assets/images/icon-check.svg" alt="">
+            </div>
+            <p class="checkbox-label">Include Lowercase Letters</p>
+          </label>
+        </div>
+
+        <div class="numbersDiv">
+          <label>
+            <input type="checkbox" name="include-numbers" id="include-numbers" class="checkbox" value="numbers">
+            <span class="custom-checkbox"></span>
+            <div class="checkmark-numbers checkmark">
+              <img src="starter-code/assets/images/icon-check.svg" alt="">
+            </div>
+            <p class="checkbox-label">Include Numbers</p>
+          </label>
+        </div>
+
+        <div class="symbolsDiv">
+          <label>
+            <input type="checkbox" name="include-symbols" id="include-symbols" class="checkbox" value="symbols">
+            <span class="custom-checkbox"></span>
+            <div class="checkmark-symbols checkmark">
+              <img src="starter-code/assets/images/icon-check.svg" alt="">
+            </div>
+
+            <p class="checkbox-label">Include Symbols</p>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="strength-box">
+        <p class="strength-text">Strength</p>
+        <div class="strength-rating">
+          <span class="strength-rating-text">MEDIUM</span>
+          <div class="bars-section">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="bar bar4"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="submit" class="generate-btn">Generate<span><img
+            src="starter-code/assets/images/icon-arrow-right.svg" alt=""></span> </button>
+
+
+
+
+
+
+
+    </form>
+
+  </main>
+
+  <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
