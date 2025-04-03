@@ -406,7 +406,7 @@ input[type=checkbox]:checked~.checkmark {
 
 }
 
-
+/*Media query that targets mobile phone screens in landscape mode so the upper part is not hidden */
 @media (orientation: landscape) and (max-width: 768px) {
     body {
         margin-top: 12rem;
