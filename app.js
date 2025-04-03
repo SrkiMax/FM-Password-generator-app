@@ -114,34 +114,29 @@ const checkPassStrength = (password) => {
 const changeBarColor = (strength) => {
     
     if (strength <= 1) {
-        
         bar1.style.backgroundColor = "var(--Red-500)";
         bar1.style.borderColor = "var(--Red-500)";
-    } else if (strength <= 2) {
         
-        bar1.style.backgroundColor = "var(--Orange-400)";
-        bar1.style.borderColor = "var(--Orange-400)";
-        bar2.style.backgroundColor = "var(--Orange-400)";
-        bar2.style.borderColor = "var(--Orange-400)";
+    } else if (strength <= 2) {
+        for (let i = 1; i <= 2; i++) {
+            const bar = document.querySelector(`.bar${i}`);
+            bar.style.backgroundColor = "var(--Orange-400)";
+            bar.style.borderColor = "var(--Orange-400)";
+        }
+        
     } else if (strength <= 4) {
         
-        bar1.style.backgroundColor = "var(--Yellow-300)";
-        bar1.style.borderColor = "var(--Yellow-300)";
-        bar2.style.backgroundColor = "var(--Yellow-300)";
-        bar2.style.borderColor = "var(--Yellow-300)";
-        bar3.style.backgroundColor = "var(--Yellow-300)";
-        bar3.style.borderColor = "var(--Yellow-300)";
+        for (let i = 1; i <= 3; i++) {
+            const bar = document.querySelector(`.bar${i}`);
+            bar.style.backgroundColor = "var(--Yellow-300)";
+            bar.style.borderColor = "var(--Yellow-300)";
+        }        
         
-    } else if (strength > 4) {
-        
-        bar1.style.backgroundColor = "var(--Green)";
-        bar1.style.borderColor = "var(--Green)";
-        bar2.style.backgroundColor = "var(--Green)";
-        bar2.style.borderColor = "var(--Green)";
-        bar3.style.backgroundColor = "var(--Green)";
-        bar3.style.borderColor = "var(--Green)";
-        bar4.style.backgroundColor = "var(--Green)";
-        bar4.style.borderColor = "var(--Green)";
+    } else if (strength > 4) {        
+        bars.forEach(bar => {
+        bar.style.backgroundColor = "var(--Green)";
+        bar.style.borderColor = "var(--Green)";
+        })        
     }
 
 };
