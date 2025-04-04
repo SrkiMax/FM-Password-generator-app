@@ -213,9 +213,6 @@ generateBtn.addEventListener("click", (event) => {
     resetBarsColor();
     generatePassword();
 
-    // Copy generated password to clipboard
-    navigator.clipboard.writeText(passwordDisplay.textContent);
-
 });
 
 
